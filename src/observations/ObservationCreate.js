@@ -76,7 +76,67 @@ function ObservationCreate ( ) {
           </div>
         </div>
         
+        <div className="row mb-3">
+          <div className="col-6 form-group">
+            <label className="form-label" htmlFor="air_temperature_unit">
+            Air Temperature Unit
+                </label>
+                <select
+                className="form-control"
+                id="air_temperature_unit"
+                name="air_temperature_unit"
+                value={observation.air_temperature_unit}
+                onChange={changeHandler}
+                required={true}
+                >
+                <option value=""> Select an air temperature unit </option>
+                <option value="C"> Celsius </option>
+                <option value="F"> Fahrenheit </option>
+                </select>
+          </div>
 
+          {observation.air_temperature_unit==="" ? (
+              null
+              )
+              : observation.air_temperature_unit==="C" ?
+              (
+            <div className="col-6">
+             <label className="form-label" htmlFor="air_temperature">
+                 Air Temperature
+             </label>
+             <input
+                className="form-control"
+                id="air_temperature"
+                name="air_temperature"
+                type="number"
+                max="107"
+                min="-50"
+                value={observation.air_temperature}
+                onChange={changeHandler}
+                required={true}
+                />
+                <small className="form-text text-muted">Enter a value between -50 and 107.</small>
+            </div>
+            ) : (
+            <div className="col-6">
+             <label className="form-label" htmlFor="air_temperature">
+                 Air Temperature
+             </label>
+             <input
+                className="form-control"
+                id="air_temperature"
+                name="air_temperature"
+                type="number"
+                max="224"
+                min="-60"
+                value={observation.air_temperature}
+                onChange={changeHandler}
+                required={true}
+                />
+                <small className="form-text text-muted">Enter a value between -60 and 224.</small>
+            </div>
+            )}
+        </div>
         
         <div className="mb-3">
           <label className="form-label" htmlFor="cloudCover">
